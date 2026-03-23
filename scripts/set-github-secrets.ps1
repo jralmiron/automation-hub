@@ -37,7 +37,11 @@ if (Get-Command gh -ErrorAction SilentlyContinue) {
 }
 
 if (-not $env:GITHUB_TOKEN) {
+  $env:GITHUB_TOKEN = powershell -ExecutionPolicy Bypass -File $vaultScript -Name github_token
+}
+
+if (-not $env:GITHUB_TOKEN) {
   throw "Falta GITHUB_TOKEN y no hay gh autenticado."
 }
 
-throw "Implementa esta ruta REST si quieres trabajar solo con GITHUB_TOKEN."
+python "$PSScriptRoot\set-github-secrets.py"

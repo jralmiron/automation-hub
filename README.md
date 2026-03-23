@@ -63,6 +63,8 @@ npm run job:seed -- daily "Evento lanzado manualmente"
 - `INNGEST_EVENT_KEY`
 - `INNGEST_SIGNING_KEY`
 
+Hay un asistente preparado en `scripts/set-github-secrets.ps1` y el mapa en `scripts/github-secrets.template.json`.
+
 ## Workflows incluidos
 
 - `ci.yml` valida TypeScript y build

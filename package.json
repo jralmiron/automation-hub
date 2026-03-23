@@ -1,0 +1,31 @@
+{
+  "name": "automation-hub",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Hub de automatizaciones con GitHub Actions e Inngest",
+  "scripts": {
+    "dev": "node ./node_modules/tsx/dist/cli.mjs watch src/server.ts",
+    "build": "node ./node_modules/typescript/bin/tsc -p tsconfig.json",
+    "start": "node dist/src/server.js",
+    "check": "node ./node_modules/typescript/bin/tsc --noEmit -p tsconfig.json",
+    "inngest:dev": "npx inngest-cli@latest dev -u http://127.0.0.1:3000/api/inngest",
+    "job:daily": "node ./node_modules/tsx/dist/cli.mjs jobs/daily-digest.ts",
+    "job:manual": "node ./node_modules/tsx/dist/cli.mjs jobs/manual-run.ts",
+    "job:event": "node ./node_modules/tsx/dist/cli.mjs jobs/event-router.ts",
+    "job:seed": "node ./node_modules/tsx/dist/cli.mjs jobs/seed-events.ts"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^2.57.4",
+    "dotenv": "^16.6.1",
+    "express": "^4.21.2",
+    "inngest": "^3.33.1",
+    "zod": "^4.1.11"
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.3",
+    "@types/node": "^24.5.2",
+    "tsx": "^4.20.5",
+    "typescript": "^5.9.2"
+  }
+}

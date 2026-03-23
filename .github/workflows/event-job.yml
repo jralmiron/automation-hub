@@ -1,0 +1,31 @@
+name: Event automation job
+
+on:
+  push:
+    branches: [main, master]
+  repository_dispatch:
+    types: [automation_event]
+
+jobs:
+  on-event:
+    runs-on: ubuntu-latest
+    env:
+      TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+      TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+      TRIGGER_API_KEY: ${{ secrets.TRIGGER_API_KEY }}
+      TRIGGER_API_URL: ${{ secrets.TRIGGER_API_URL }}
+      SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+      SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
+      SUPABASE_SCHEMA: ${{ secrets.SUPABASE_SCHEMA }}
+      GMAIL_SUMMARY_TO: ${{ secrets.GMAIL_SUMMARY_TO }}
+      INNGEST_EVENT_KEY: ${{ secrets.INNGEST_EVENT_KEY }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+      - run: npm install
+      - run: npm run job:event
+      - if: env.INNGEST_EVENT_KEY != ''
+        run: npm run job:seed -- github-push "Evento desde GitHub Actions"

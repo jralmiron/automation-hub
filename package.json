@@ -20,11 +20,13 @@
     "dotenv": "^16.6.1",
     "express": "^4.21.2",
     "inngest": "^3.33.1",
+    "pg": "^8.16.3",
     "zod": "^4.1.11"
   },
   "devDependencies": {
     "@types/express": "^5.0.3",
     "@types/node": "^24.5.2",
+    "@types/pg": "^8.15.5",
     "tsx": "^4.20.5",
     "typescript": "^5.9.2"
   }

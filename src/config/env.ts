@@ -13,6 +13,7 @@ const envSchema = z.object({
   TRIGGER_API_URL: z.string().url().default("https://api.trigger.dev"),
   SUPABASE_URL: z.string().optional(),
   SUPABASE_SERVICE_ROLE_KEY: z.string().optional(),
+  SUPABASE_DB_URL: z.string().optional(),
   SUPABASE_SCHEMA: z.string().default("public"),
   GMAIL_SUMMARY_TO: z.string().optional(),
   GITHUB_REPOSITORY: z.string().optional(),

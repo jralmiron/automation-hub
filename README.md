@@ -58,6 +58,7 @@ npm run job:seed -- daily "Evento lanzado manualmente"
 - `TRIGGER_API_URL`
 - `SUPABASE_URL`
 - `SUPABASE_SERVICE_ROLE_KEY`
+- `SUPABASE_DB_URL`
 - `SUPABASE_SCHEMA`
 - `GMAIL_SUMMARY_TO`
 - `INNGEST_EVENT_KEY`

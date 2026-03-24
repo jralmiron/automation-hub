@@ -19,8 +19,6 @@ Este repo ya tiene preparado el mapeo de secrets en `scripts/github-secrets.temp
 
 - `SUPABASE_SERVICE_ROLE_KEY` (solo si quieres usar la API de Supabase en vez de conexión Postgres directa)
 - `GMAIL_SUMMARY_TO`
-- `INNGEST_EVENT_KEY`
-- `INNGEST_SIGNING_KEY`
 
 ## Valores ya preparados para la base principal
 

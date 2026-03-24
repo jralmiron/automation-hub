@@ -4,9 +4,6 @@ import { z } from "zod";
 const envSchema = z.object({
   APP_PORT: z.coerce.number().default(3000),
   APP_BASE_URL: z.string().url().default("http://127.0.0.1:3000"),
-  INNGEST_APP_ID: z.string().default("automation-hub"),
-  INNGEST_EVENT_KEY: z.string().optional(),
-  INNGEST_SIGNING_KEY: z.string().optional(),
   TELEGRAM_BOT_TOKEN: z.string().optional(),
   TELEGRAM_CHAT_ID: z.string().optional(),
   TRIGGER_API_KEY: z.string().optional(),

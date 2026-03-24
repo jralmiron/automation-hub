@@ -19,7 +19,6 @@ jobs:
       SUPABASE_DB_URL: ${{ secrets.SUPABASE_DB_URL }}
       SUPABASE_SCHEMA: ${{ secrets.SUPABASE_SCHEMA }}
       GMAIL_SUMMARY_TO: ${{ secrets.GMAIL_SUMMARY_TO }}
-      INNGEST_EVENT_KEY: ${{ secrets.INNGEST_EVENT_KEY }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -28,5 +27,3 @@ jobs:
           cache: npm
       - run: npm install
       - run: npm run job:event
-      - if: env.INNGEST_EVENT_KEY != ''
-        run: npm run job:seed -- github-push "Evento desde GitHub Actions"

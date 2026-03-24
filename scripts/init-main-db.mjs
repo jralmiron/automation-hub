@@ -1,5 +1,10 @@
 import { Client } from "pg";
 import { execFileSync } from "node:child_process";
+import dns from "node:dns";
+
+try {
+  dns.setDefaultResultOrder("ipv4first");
+} catch {}
 
 function getSecret(name) {
   return execFileSync(

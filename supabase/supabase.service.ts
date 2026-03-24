@@ -1,6 +1,11 @@
 import { createClient } from "@supabase/supabase-js";
 import { Client } from "pg";
+import dns from "node:dns";
 import { env } from "../src/config/env.js";
+
+try {
+  dns.setDefaultResultOrder("ipv4first");
+} catch {}
 
 export function getSupabaseClient() {
   if (!env.SUPABASE_URL || !env.SUPABASE_SERVICE_ROLE_KEY) {

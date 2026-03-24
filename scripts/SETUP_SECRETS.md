@@ -25,7 +25,7 @@ Este repo ya tiene preparado el mapeo de secrets en `scripts/github-secrets.temp
 ## Valores ya preparados para la base principal
 
 - `SUPABASE_URL` <- `vault:supabase_main_url`
-- `SUPABASE_DB_URL` <- `vault:supabase_main_db_url`
+- `SUPABASE_DB_URL` <- `vault:supabase_main_pooler_url`
 - `SUPABASE_SCHEMA` <- `public`
 
 ## Script automático

@@ -15,13 +15,8 @@ function getSecret(name) {
 }
 
 const client = new Client({
-  host: "db.hwtujtvuytrhzvotgxpu.supabase.co",
-  port: 5432,
-  user: "postgres",
-  password: getSecret("supabase_main_password"),
-  database: "postgres",
+  connectionString: getSecret("supabase_main_pooler_url"),
   ssl: { rejectUnauthorized: false },
-  family: 4,
 });
 
 await client.connect();
@@ -45,7 +40,7 @@ try {
     insert into public.automation_heartbeats (source, payload)
     values ($1, $2::jsonb)
     returning id, source, created_at
-  `, ["setup-gastronomico", JSON.stringify({ setup: true, at: new Date().toISOString() })]);
+  `, ["setup-main", JSON.stringify({ setup: true, at: new Date().toISOString() })]);
 
   console.log(JSON.stringify({ ok: true, inserted: result.rows[0] }, null, 2));
 } finally {

@@ -18,7 +18,11 @@ async function writeHeartbeatViaPostgres(source: string, payload: Record<string,
     throw new Error("Falta SUPABASE_DB_URL");
   }
 
-  const client = new Client({ connectionString: env.SUPABASE_DB_URL, ssl: { rejectUnauthorized: false } });
+  const client = new Client({
+    connectionString: env.SUPABASE_DB_URL,
+    ssl: { rejectUnauthorized: false },
+    family: 4,
+  } as any);
   await client.connect();
 
   try {

@@ -16,6 +16,7 @@ const client = new Client({
   password: getSecret("supabase_main_password"),
   database: "postgres",
   ssl: { rejectUnauthorized: false },
+  family: 4,
 });
 
 await client.connect();

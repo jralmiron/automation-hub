@@ -6,6 +6,7 @@ import {
   getHelpMessage,
   normalizeText,
   parseDirectCommand,
+  parseNaturalCommand,
   type CommandIntent,
 } from "./command-intents.js";
 import { parseIntentWithDeepSeek } from "./deepseek.service.js";
@@ -66,6 +67,11 @@ async function resolveIntent(text: string): Promise<CommandIntent> {
   const direct = parseDirectCommand(text);
   if (direct) {
     return direct;
+  }
+
+  const natural = parseNaturalCommand(text);
+  if (natural) {
+    return natural;
   }
 
   return parseIntentWithDeepSeek(text);

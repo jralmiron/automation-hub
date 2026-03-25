@@ -9,6 +9,13 @@ function parseVipEmails() {
     .filter(Boolean);
 }
 
+function escapeHtml(value: string) {
+  return value
+    .replaceAll("&", "&amp;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;");
+}
+
 async function gmailRequest<T>(path: string, init?: RequestInit) {
   const accessToken = await getGoogleAccessToken();
   const response = await fetch(`https://gmail.googleapis.com/gmail/v1/users/me/${path}`, {
@@ -77,7 +84,7 @@ function formatList(title: string, messages: InboxMessage[]) {
 
   const lines = [title];
   for (const [index, message] of messages.entries()) {
-    lines.push(`${index + 1}. ${message.subject} — ${message.from}`);
+    lines.push(`${index + 1}. ${escapeHtml(message.subject)} — ${escapeHtml(message.from)}`);
   }
   return lines.join("\n");
 }

@@ -10,6 +10,13 @@ export type CalendarAgendaEvent = {
   htmlLink?: string;
 };
 
+function escapeHtml(value: string) {
+  return value
+    .replaceAll("&", "&amp;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;");
+}
+
 function getOffsetString(timeZone: string, date = new Date()) {
   const part = new Intl.DateTimeFormat("en-US", {
     timeZone,
@@ -177,7 +184,7 @@ export function formatAgendaTelegramMessage(
   const lines = ["<b>Agenda de hoy</b>"];
   for (const [index, event] of agenda.events.entries()) {
     lines.push(
-      `${index + 1}. ${formatEventTime(event, agenda.timeZone)} — ${event.summary}`,
+      `${index + 1}. ${formatEventTime(event, agenda.timeZone)} — ${escapeHtml(event.summary)}`,
     );
   }
   return lines.join("\n");
@@ -198,7 +205,7 @@ export function formatTomorrowAgendaTelegramMessage(
 
   const lines = ["<b>Reuniones de mañana</b>"];
   for (const [index, event] of agenda.events.entries()) {
-    lines.push(`${index + 1}. ${formatEventTime(event, agenda.timeZone)} — ${event.summary}`);
+    lines.push(`${index + 1}. ${formatEventTime(event, agenda.timeZone)} — ${escapeHtml(event.summary)}`);
   }
   return lines.join("\n");
 }
@@ -218,7 +225,7 @@ export function formatKeyRemindersTelegramMessage(
 
   const lines = ["<b>Recordatorios clave</b>"];
   for (const [index, event] of reminders.events.slice(0, 5).entries()) {
-    lines.push(`${index + 1}. ${formatEventTime(event, reminders.timeZone)} — ${event.summary}`);
+    lines.push(`${index + 1}. ${formatEventTime(event, reminders.timeZone)} — ${escapeHtml(event.summary)}`);
   }
   return lines.join("\n");
 }

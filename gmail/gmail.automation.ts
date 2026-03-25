@@ -10,6 +10,13 @@ export type InboxMessage = {
   labelIds: string[];
 };
 
+function escapeHtml(value: string) {
+  return value
+    .replaceAll("&", "&amp;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;");
+}
+
 const AUTO_LABELS = {
   Trabajo: "Auto/Trabajo",
   Compras: "Auto/Compras",
@@ -204,8 +211,8 @@ export function formatInboxTelegramMessage(
 
   const lines = ["<b>Primeros 5 correos de tu bandeja</b>"];
   for (const [index, message] of inbox.messages.entries()) {
-    lines.push(`${index + 1}. <b>${message.subject}</b>`);
-    lines.push(`   De: ${message.from}`);
+    lines.push(`${index + 1}. <b>${escapeHtml(message.subject)}</b>`);
+    lines.push(`   De: ${escapeHtml(message.from)}`);
   }
   return lines.join("\n");
 }

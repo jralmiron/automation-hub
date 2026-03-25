@@ -20,6 +20,7 @@ const envSchema = z.object({
   GOOGLE_REFRESH_TOKEN: z.string().optional(),
   GOOGLE_CALENDAR_ID: z.string().default("primary"),
   GOOGLE_TIMEZONE: z.string().default("Europe/Madrid"),
+  GOOGLE_SETUP_TOKEN: z.string().optional(),
   OPENWEATHER_API_KEY: z.string().optional(),
   AEMET_API_KEY: z.string().optional(),
   VIP_EMAILS: z.string().optional(),

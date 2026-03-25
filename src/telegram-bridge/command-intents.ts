@@ -9,6 +9,16 @@ export const allowedJobs = [
   "calendar_agenda",
   "gmail_organize",
   "morning_routine",
+  "urgent_emails",
+  "tomorrow_meetings",
+  "purchase_tracking",
+  "financial_summary",
+  "newsletter_cleanup",
+  "followup_24h",
+  "followup_48h",
+  "night_digest",
+  "briefing",
+  "focus_mode",
 ] as const;
 export type AllowedJob = (typeof allowedJobs)[number];
 
@@ -40,6 +50,16 @@ export function getHelpMessage() {
     "• /agenda -> te muestra la agenda de hoy en Google Calendar",
     "• /organize -> organiza el email por categorías seguras",
     "• /morning -> ejecuta la rutina diaria de las 09:00",
+    "• /urgent -> correos urgentes",
+    "• /tomorrow -> reuniones de mañana",
+    "• /shopping -> seguimiento de compras",
+    "• /finance -> resumen financiero",
+    "• /newsletter -> limpieza de newsletters",
+    "• /followup24 -> tareas sin responder 24h",
+    "• /followup48 -> tareas sin responder 48h",
+    "• /night -> digest nocturno",
+    "• /briefing -> agenda + clima + trayecto",
+    "• /focus -> modo foco",
     "• /status -> muestra estado del bridge y último workflow",
     "• /telegram texto -> envía un texto manual por el canal Telegram del automation-hub",
     "",
@@ -49,6 +69,10 @@ export function getHelpMessage() {
     "• qué correos tengo",
     "• cuál es mi agenda de hoy",
     "• organiza mi correo",
+    "• muéstrame los correos urgentes",
+    "• qué reuniones tengo mañana",
+    "• resumen financiero",
+    "• activa modo foco",
     "• quiero el estado",
   ].join("\n");
 }
@@ -95,6 +119,46 @@ export function parseDirectCommand(rawText: string): CommandIntent | null {
 
   if (lower === "/morning" || lower === "/rutina") {
     return { intent: "run_manual_job", job: "morning_routine", confidence: "high", reason: "slash-command" };
+  }
+
+  if (lower === "/urgent") {
+    return { intent: "run_manual_job", job: "urgent_emails", confidence: "high", reason: "slash-command" };
+  }
+
+  if (lower === "/tomorrow") {
+    return { intent: "run_manual_job", job: "tomorrow_meetings", confidence: "high", reason: "slash-command" };
+  }
+
+  if (lower === "/shopping") {
+    return { intent: "run_manual_job", job: "purchase_tracking", confidence: "high", reason: "slash-command" };
+  }
+
+  if (lower === "/finance") {
+    return { intent: "run_manual_job", job: "financial_summary", confidence: "high", reason: "slash-command" };
+  }
+
+  if (lower === "/newsletter") {
+    return { intent: "run_manual_job", job: "newsletter_cleanup", confidence: "high", reason: "slash-command" };
+  }
+
+  if (lower === "/followup24") {
+    return { intent: "run_manual_job", job: "followup_24h", confidence: "high", reason: "slash-command" };
+  }
+
+  if (lower === "/followup48") {
+    return { intent: "run_manual_job", job: "followup_48h", confidence: "high", reason: "slash-command" };
+  }
+
+  if (lower === "/night") {
+    return { intent: "run_manual_job", job: "night_digest", confidence: "high", reason: "slash-command" };
+  }
+
+  if (lower === "/briefing") {
+    return { intent: "run_manual_job", job: "briefing", confidence: "high", reason: "slash-command" };
+  }
+
+  if (lower === "/focus") {
+    return { intent: "run_manual_job", job: "focus_mode", confidence: "high", reason: "slash-command" };
   }
 
   if (lower.startsWith("/telegram")) {

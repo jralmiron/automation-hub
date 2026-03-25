@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
     inputs:
       job:
-        description: "daily | telegram | trigger | supabase | gmail_inbox | calendar_agenda | gmail_organize | morning_routine"
+        description: "daily | telegram | trigger | supabase | gmail_inbox | calendar_agenda | gmail_organize | morning_routine | urgent_emails | tomorrow_meetings | purchase_tracking | financial_summary | newsletter_cleanup | followup_24h | followup_48h | night_digest | briefing | focus_mode"
         required: true
         default: "daily"
       text:
@@ -30,6 +30,9 @@ jobs:
       GOOGLE_REFRESH_TOKEN: ${{ secrets.GOOGLE_REFRESH_TOKEN }}
       GOOGLE_CALENDAR_ID: ${{ secrets.GOOGLE_CALENDAR_ID }}
       GOOGLE_TIMEZONE: ${{ secrets.GOOGLE_TIMEZONE }}
+      OPENWEATHER_API_KEY: ${{ secrets.OPENWEATHER_API_KEY }}
+      AEMET_API_KEY: ${{ secrets.AEMET_API_KEY }}
+      VIP_EMAILS: ${{ secrets.VIP_EMAILS }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4

@@ -18,6 +18,8 @@
     "google/**/*.ts",
     "calendar/**/*.ts",
     "gmail/**/*.ts",
+    "weather/**/*.ts",
+    "traffic/**/*.ts",
     "telegram/**/*.ts",
     "trigger/**/*.ts",
     "supabase/**/*.ts",

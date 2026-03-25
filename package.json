@@ -13,6 +13,8 @@
     "job:manual": "node ./node_modules/tsx/dist/cli.mjs jobs/manual-run.ts",
     "job:event": "node ./node_modules/tsx/dist/cli.mjs jobs/event-router.ts",
     "job:morning": "node ./node_modules/tsx/dist/cli.mjs jobs/morning-routine.ts",
+    "job:tomorrow": "node ./node_modules/tsx/dist/cli.mjs jobs/tomorrow-meetings.ts",
+    "job:night": "node ./node_modules/tsx/dist/cli.mjs jobs/night-digest.ts",
     "bridge:test": "node ./node_modules/tsx/dist/cli.mjs scripts/test-telegram-bridge.ts"
   },
   "dependencies": {

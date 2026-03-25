@@ -18,7 +18,7 @@ function Resolve-SecretValue([string]$mapping) {
     return $mapping.Substring(8)
   }
 
-  return $env:$mapping
+  return [Environment]::GetEnvironmentVariable($mapping, "Process")
 }
 
 if (Get-Command gh -ErrorAction SilentlyContinue) {

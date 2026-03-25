@@ -11,7 +11,9 @@
     "check": "node ./node_modules/typescript/bin/tsc --noEmit -p tsconfig.json",
     "job:daily": "node ./node_modules/tsx/dist/cli.mjs jobs/daily-digest.ts",
     "job:manual": "node ./node_modules/tsx/dist/cli.mjs jobs/manual-run.ts",
-    "job:event": "node ./node_modules/tsx/dist/cli.mjs jobs/event-router.ts"
+    "job:event": "node ./node_modules/tsx/dist/cli.mjs jobs/event-router.ts",
+    "job:morning": "node ./node_modules/tsx/dist/cli.mjs jobs/morning-routine.ts",
+    "bridge:test": "node ./node_modules/tsx/dist/cli.mjs scripts/test-telegram-bridge.ts"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.57.4",

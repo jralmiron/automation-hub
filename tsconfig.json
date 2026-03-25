@@ -13,11 +13,15 @@
     "types": ["node"]
   },
   "include": [
+    "api/**/*.ts",
     "src/**/*.ts",
+    "google/**/*.ts",
+    "calendar/**/*.ts",
     "gmail/**/*.ts",
     "telegram/**/*.ts",
     "trigger/**/*.ts",
     "supabase/**/*.ts",
-    "jobs/**/*.ts"
+    "jobs/**/*.ts",
+    "scripts/**/*.ts"
   ]
 }

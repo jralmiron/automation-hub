@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
     inputs:
       job:
-        description: "daily | telegram | trigger | supabase"
+        description: "daily | telegram | trigger | supabase | gmail_inbox | calendar_agenda | gmail_organize | morning_routine"
         required: true
         default: "daily"
       text:
@@ -25,6 +25,11 @@ jobs:
       SUPABASE_DB_URL: ${{ secrets.SUPABASE_DB_URL }}
       SUPABASE_SCHEMA: ${{ secrets.SUPABASE_SCHEMA }}
       GMAIL_SUMMARY_TO: ${{ secrets.GMAIL_SUMMARY_TO }}
+      GOOGLE_CLIENT_ID: ${{ secrets.GOOGLE_CLIENT_ID }}
+      GOOGLE_CLIENT_SECRET: ${{ secrets.GOOGLE_CLIENT_SECRET }}
+      GOOGLE_REFRESH_TOKEN: ${{ secrets.GOOGLE_REFRESH_TOKEN }}
+      GOOGLE_CALENDAR_ID: ${{ secrets.GOOGLE_CALENDAR_ID }}
+      GOOGLE_TIMEZONE: ${{ secrets.GOOGLE_TIMEZONE }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4

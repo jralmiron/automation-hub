@@ -1,9 +1,14 @@
 node_modules/
 dist/
 .env
+.env.vercel.pull
 .env.local
 .env.*.local
 .npm/
 coverage/
 *.log
 .github/.cache/
+.vercel/
+.vercel-protection.json
+secrets/
+tmp-*.json
